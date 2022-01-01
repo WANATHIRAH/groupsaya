@@ -34,12 +34,12 @@ body {
     border-radius: 5px;
     position: relative;
     background: inherit;
-    overflow: hidden;
+    overflow: auto;
     border-radius: 5px;
     z-index: 1;
 }
 
-.tintedbg:before {
+.tintedbg:before{
     content: "";
     position: absolute;
     background: inherit;
@@ -108,6 +108,27 @@ input[type=text] {
     padding: 5px 10px;
 }
 
-.sbt {
-    width: 10cm;
+
+.Cancelbtn {
+    background-color: black;
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.sbt{
+    float: right;
+    text-align: right;
+}
+
+.sbt button {
+    display:inline-block;
+    cursor: pointer;
+    margin-right:20px;
+}
+
+.Cancelbtn:hover{
+    background-color: darkred;
 }
