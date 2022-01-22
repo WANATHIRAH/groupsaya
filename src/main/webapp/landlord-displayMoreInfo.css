@@ -1,25 +1,28 @@
 body {
     background-image: url('https://i.pinimg.com/736x/9c/d3/a7/9cd3a7847066e13f1e400d93d004281d--home-painting-ideas-interior-painting.jpg');
-    display: grid;
-    align-items: center;
     background-repeat: no-repeat;
     background-size: cover;
-    justify-content: center;
-    height: 100vh;
+    height: 100%;
     font-size: 100%;
-    font-family: Georgia, serif;
+    font-family: Verdana,sans-serif;
 }
 
+.showgrid{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.mySlides {display:none;}
+
 .tintedbg2{
-    width: 60rem;
-    height: 30rem;
+    width: 80rem;
+    height: 35rem;
     box-shadow: 0 0 1rem 0 rgba( 0, 0, 0, .2);
     border-radius: 5px;
     position: relative;
     background: inherit;
     overflow: hidden;
-    border-radius: 5px;
-    z-index: 1;
     margin-bottom: 20px;
 }
 
@@ -42,22 +45,17 @@ body {
     text-align: left;
     padding: 15px 15px 15px;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    margin-top: 100px;
+    margin-top: 50px;
 }
 .colk{
     margin-top: 20px;
+    margin-left: 30px;
 }
-.carousel-item img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 20rem;
-    cursor: pointer;
-}
+
 .imagex{
     background-color: cornflowerblue;
-    width: 25rem;
-    height: 28rem;
+    width: 34rem;
+    height: 32rem;
     z-index: 1;
     margin: 20px auto auto 15px;
     padding: 60px 10px;
@@ -66,16 +64,15 @@ body {
 
 .mytable{
     background-color: white;
-    width: 31rem;
-    height: 28rem;
+    width: 37rem;
+    height: 32rem;
     position: absolute;
     top:20px;
-    right:15px;
+    right:30px;
     overflow: auto;
 }
 
 .mybtn {
-    z-index: 3;
     float: right;
     text-align: right;
     margin-top: 20px;
@@ -104,6 +101,7 @@ table,td {
 
 table {
     width: 100%;
+    border-collapse: collapse;
 }
 
 .center {

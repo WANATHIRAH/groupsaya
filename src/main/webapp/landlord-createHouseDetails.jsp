@@ -11,7 +11,7 @@
 <%@page import="java.util.Date"%>
 <%@ page import="java.text.SimpleDateFormat" %>
 <html>
-<style><%@include file="/WEB-INF/HD.css"%></style>
+<style><%@include file="landlord-createHouseDetails.css"%></style>
 <head>
     <%@include file="Menu.html"%>
 </head>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="tintedbg">
-    <form name="HouseInfoForm" method="post" action="HouseDetails.jsp"  enctype = "multipart/form-data">
+    <form name="HouseInfoForm" method="post" action="LCreateHouseServlet"  enctype = "multipart/form-data">
     <br/>
     <br/>
         <div class="form-row">
@@ -88,7 +88,7 @@
                 <div class="quantity">
                     <img src="pic/group-512.png"  width="40" height="35">
                     <button class="btn minus-btnNOT disabled" type="button">-</button>
-                    <input type="text" id="NumOfTenant" value="1">
+                    <input type="text" name="NumOfTenant" id="NumOfTenant" value="1">
                     <button class="btn plus-btnNOT" type="button" >+</button>
                 </div>
         </div>
@@ -107,7 +107,7 @@
                 <div class="quantity">
                     <img src="pic/hotel-512.png"  width="40" height="40">
                     <button class="btn minus-btnhotel disabled" type="button">-</button>
-                    <input type="text" id="NumOfRooms"  value="1">
+                    <input type="text" name="NumOfRooms" id="NumOfRooms"  value="1">
                     <button class="btn plus-btnhotel" type="button">+</button>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                     <div class="quantity">
                        <img src="pic/bathroom.png"  width="40" height="40">
                       <button class="btn minus-btnbath disabled" type="button">-</button>
-                      <input type="text" id="NumOfToilet" value="1">
+                      <input type="text" name="NumOfToilet" id="NumOfToilet" value="1">
                       <button class="btn plus-btnbath" type="button">+</button>
                     </div>
             </div>
@@ -125,7 +125,7 @@
                 <div class="quantity">
                     <img src="pic/air-conditioner.png"  width="40" height="40">
                     <button class="btn minus-btnac disabled" type="button">-</button>
-                    <input type="text" id="NumOfAC" value="1">
+                    <input type="text" name="NumOfAC" id="NumOfAC" value="1">
                     <button class="btn plus-btnac" type="button">+</button>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                 <div class="quantity">
                     <img src="pic/sofa-512.png"  width="40" height="40">
                     <button class="btn minus-btnsfa disabled" type="button">-</button>
-                    <input type="text" id="NumOfSofa" value="1">
+                    <input type="text" name="NumOfSofa" id="NumOfSofa" value="1">
                     <button class="btn plus-btnsfa" type="button">+</button>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                 <div class="quantity">
                     <img src="pic/washing-machine-512.png"  width="36" height="40">
                     <button class="btn minus-btnwm disabled" type="button">-</button>
-                    <input type="text" id="NumOfWM" value="1">
+                    <input type="text" name="NumOfWM" id="NumOfWM" value="1">
                     <button class="btn plus-btnwm" type="button">+</button>
                 </div>
            </div>
@@ -162,21 +162,25 @@
 
 
         <br>
+
         <div class="file-upload-wrapper col-md">
             <label for="hPic">House Image :</label>
-                <input type="file" id="hPic" name="hPic" class="file-upload"
-                       data-height="300" required="required"/>
+            <input type="file" id="hPic" name="hPic" class="file-upload"
+                   data-height="300" required="required" multiple=""/>
         </div>
+
 
         <br>
         <div class="mb-3 col-md">
             <label for="hAgree" class="form-label">House Agreement</label>
-            <input class="form-control form-control-sm" id="hAgree" type="file" multiple="">
+            <input class="form-control form-control-sm" name="hAgree" id="hAgree" type="file" accept="application/pdf, application/word"/>
+            <br>
+            <p> This
         </div>
 
     <br/>
         <div class="sbt mx-auto">
-            <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>
     <br/>
     </form>
@@ -443,16 +447,32 @@
 
 </script>
 
-<% //scriplet
-    String mydis = request.getParameter("hName");
+<%--<%--%>
+<%--    String mytext = request.getParameter("PubDate");--%>
 
-    if(mydis == null){
+<%--    if(mytext == null){--%>
 
-    }
-    else{
-        session.setAttribute("HName",request.getParameter("hName"));
-        session.setAttribute("HPic",request.getParameter("hPic"));
-    }
-%>
+<%--    }--%>
+<%--    else{--%>
+<%--        session.setAttribute("sdid",request.getParameter("hid"));--%>
+<%--        session.setAttribute("sdid",request.getParameter("hName"));--%>
+<%--        session.setAttribute("sdid",request.getParameter("PubDate"));--%>
+<%--        session.setAttribute("sdName",request.getParameter("hAddress"));--%>
+<%--        session.setAttribute("sdEmail",request.getParameter("Pricepm"));--%>
+<%--        session.setAttribute("sdPnum",request.getParameter("hAvailability"));--%>
+<%--        session.setAttribute("sdid",request.getParameter("hWifi"));--%>
+<%--        session.setAttribute("sdName",request.getParameter("NumOfTenant"));--%>
+<%--        session.setAttribute("sdEmail",request.getParameter("NumOfRooms"));--%>
+<%--        session.setAttribute("sdPnum",request.getParameter("NumOfToilet"));--%>
+<%--        session.setAttribute("sdid",request.getParameter("NumOfAC"));--%>
+<%--        session.setAttribute("sdName",request.getParameter("NumOfSofa"));--%>
+<%--        session.setAttribute("sdEmail",request.getParameter("NumOfWM"));--%>
+<%--        session.setAttribute("sdPnum",request.getParameter("Desc"));--%>
+<%--        session.setAttribute("sdid",request.getParameter("hPic"));--%>
+<%--        session.setAttribute("sdName",request.getParameter("hAgree"));--%>
+
+<%--        out.println("session created");--%>
+<%--    }--%>
+<%--%>--%>
 </body>
 </html>

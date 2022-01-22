@@ -6,15 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <html>
-<style><%@include file="/WEB-INF/HLP.css"%></style>
+<style><%@include file="landlord-displayHouseList.css"%></style>
 <head>
-    <%@include file="Menu.html"%>
+    <title>House List Page</title>
 </head>
 <body>
+<div class="mymenu"><%@include file="Menu.html"%></div>
 <div class="TT">
-    <img src="pic/rumah.jpg">
      <p>YOUR HOUSE LIST</p>
 </div>
 <br>
@@ -40,21 +39,20 @@
         </div>
     </div>
 
-</div>
-<br>
 
-<div class="C" id="Chouse">
-    <button onclick="z()">
+    <div class="C" id="Chouse">
+        <button onclick="z()">
 	 <span class="button__icon">
 	 <ion-icon name="add"></ion-icon>
 	 </span>
-        <br>
-        <span class="button__text">Create</span>
-    </button>
+            <br>
+            <span class="button__text">Create</span>
+        </button>
+    </div>
+
 </div>
-
 <br>
-
+<br>
 
 
 
@@ -68,11 +66,11 @@
 <script type="text/javascript">
     <%--kene ada sql untuk specifickan id rumah mana nak display dalam page ni--%>
     function x() {
-        location.href = "MoreInfoHouse.jsp";
+        location.href = "landlord-displayMoreInfo.jsp";
     }
 
     function z() {
-        location.href = "HouseDetails.jsp";
+        location.href = "landlord-createHouseDetails.jsp";
     }
 </script>
 

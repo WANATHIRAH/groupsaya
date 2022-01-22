@@ -1,47 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="admin-navbar.css">
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <a class="icon" href="landlord-home.jsp" >UITM NR RENTAL SYSTEM</a>
 
 
-<style>
-    body {margin:0;}
+    <div class="dropdwn">
+        <button class="dropbtn" >
+            <i class="fa fa-user"></i>
+        </button>
+        <div class="dropdwn-content" style="right: 0px; ">
+            <a href="landlord-viewProfile.jsp">PROFILE</a>
+            <a href="landlord-createProfile.jsp" ><i class="fa fa-sign-out"></i> LOGOUT</a>
+        </div>
+    </div>
 
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 4;
-    }
 
-    li {
-        float: left;
-    }
 
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+    <div class="dropdwn">
+        <button class="dropbtn" >LIST
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdwn-content" style="right: 44px;">
+            <a href="landlord-displayHouseList.jsp">MY HOUSE</a>
+            <a href="landlord-listPayment.jsp">MY PAYMENT</a>
+            <a href="landlord-displayPayment.jsp">CONTACT US</a>
+            <a href="landlord-displayBookingList.jsp">BOOKING</a>
+            <a href="Test.jsp">Test</a>
+        </div>
+    </div>
 
-    li a:hover {
-        background-color: lightskyblue;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-family: bold;
-    }
 
-</style>
 
-    <ul>
-        <li><a href="index.jsp">Home</a></li>
-        <li><a href="HouseListPage.jsp">My House</a></li>
-        <li><a href="MonthlyRent.jsp">My Payment</a></li>
-        <li><a href="AboutUS.jsp">About Us</a></li>
-    </ul>
+
+    <a href="landlord-home.jsp" >HOME</a>
+
+
 </div>
+
+</body>
+</html>
 
