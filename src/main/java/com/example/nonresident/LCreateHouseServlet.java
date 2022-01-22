@@ -140,20 +140,20 @@ public class LCreateHouseServlet extends HttpServlet {
                }
 
 
-//           PreparedStatement st2;
-//           String query2="insert into housePic(housePicName,landlordid) values(?,?)";
-//           st2 = conn.prepareStatement(query2);
-//           st2.setString(1,imageFileName);
-//           st2.setInt(2,hid);
-//
-//               int row2= st2.executeUpdate();//return no of row effected
-//
-//
-//               if(row2>0){
-//                   out.println("Record inserted");
-//               }else{
-//                   out.println("Record failed");
-//               }
+           PreparedStatement st2;
+           String query2="insert into housePic(housePicName,landlordid) values(?,?)";
+           st2 = conn.prepareStatement(query2);
+           st2.setString(1,imageFileName);
+           st2.setInt(2,hid);
+
+               int row2= st2.executeUpdate();//return no of row effected
+
+
+               if(row2>0){
+                   out.println("Record inserted");
+               }else{
+                   out.println("Record failed");
+               }
 
 //           PreparedStatement st3;
 //           String query3="insert into houseAgree(houseAgreeName,landlordid) values(?,?)";
