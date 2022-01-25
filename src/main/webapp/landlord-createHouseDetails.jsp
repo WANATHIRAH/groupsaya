@@ -29,7 +29,7 @@
 </div>
 
 <div class="tintedbg">
-    <form name="HouseInfoForm" method="post" action="LCreateHouseServlet"  enctype = "multipart/form-data">
+    <form name="HouseInfoForm" method="post" action="LCreateHouseServlet" action="AddImagesServlet"  enctype = "multipart/form-data">
     <br/>
     <br/>
         <div class="form-row">
@@ -45,38 +45,48 @@
 
         <div class="form-group col-md">
                 <label for="hName">House Name</label>
-                <input type="text" id="hName" class="form-control" name="hName" placeholder="Your House Name">
+                <input type="text" id="hName" class="form-control" maxlength="25" name="hName" placeholder="eg: Bunglow 2 Tingkat" required>
         </div>
 
         <div class="form-group col-md">
                 <label for="hAddress">Address</label>
-                <input type="text" id="hAddress" class="form-control" name="hAddress" placeholder="eg: Taman Sentosa Jaya">
+                <input type="text" id="hAddress" class="form-control" name="hAddress" placeholder="House Address" required>
+        </div>
+
+        <div class="form-group col-md">
+            <label for="hloc">Location:</label>
+            <select name="hloc" id="hloc">
+                <option value="Taman Lipat Kajang">Taman Lipat Kajang</option>
+                <option value="Taman Merlimau">Taman Merlimau</option>
+                <option value="Taman Lipat Perdana">Taman Lipat Perdana</option>
+                <option value="Seri Mendapat">Seri Mendapat</option>
+            </select>
         </div>
 
         <div class="form-row col-md">
             <div class="form-group col-md-6">
                 <label for="Pricepm">Price per month (RM)</label>
-                <input type="number" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300">
+                <input type="number" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300" required>
             </div>
             <div class="form-group col-md-3">
                 <p>Available?</p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hAvailability" id="OYes" value="Yes">
-                    <label class="form-check-label" for="OYes">Yes</label>
+                    <input class="form-check-input" type="radio" name="hAvailability" id="OYes" value="Available" checked>
+                    <label class="form-check-label" for="OYes">Available</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hAvailability" id="ONo" value="No">
-                    <label class="form-check-label" for="ONo">No</label>
+                    <input class="form-check-input" type="radio" name="hAvailability" id="ONo" value="Not Available" disabled>
+                    <label class="form-check-label" for="ONo">Not Available</label>
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <p>Wifi?</p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hWifi" id="WYes" value="Yes">
+                    <input class="form-check-input" type="radio" name="hWifi" id="WYes" value="Available">
                     <label class="form-check-label" for="OYes">Yes</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hWifi" id="WNo" value="No">
+                    <input class="form-check-input" type="radio" name="hWifi" id="WNo" value="Not Available">
                     <label class="form-check-label" for="ONo">No</label>
                 </div>
             </div>
@@ -103,61 +113,58 @@
         <br>
 
         <div class="form-row col-md">
-            <div class="col-3">
+
                 <div class="quantity">
                     <img src="pic/hotel-512.png"  width="40" height="40">
                     <button class="btn minus-btnhotel disabled" type="button">-</button>
                     <input type="text" name="NumOfRooms" id="NumOfRooms"  value="1">
                     <button class="btn plus-btnhotel" type="button">+</button>
                 </div>
-            </div>
 
-            <div class="col-3">
+
                     <div class="quantity">
                        <img src="pic/bathroom.png"  width="40" height="40">
                       <button class="btn minus-btnbath disabled" type="button">-</button>
                       <input type="text" name="NumOfToilet" id="NumOfToilet" value="1">
                       <button class="btn plus-btnbath" type="button">+</button>
                     </div>
-            </div>
 
-            <div class="col-3">
-                <div class="quantity">
-                    <img src="pic/air-conditioner.png"  width="40" height="40">
-                    <button class="btn minus-btnac disabled" type="button">-</button>
-                    <input type="text" name="NumOfAC" id="NumOfAC" value="1">
-                    <button class="btn plus-btnac" type="button">+</button>
-                </div>
-            </div>
+
         </div>
 
         <br>
         <div class="form-row col-md">
-            <div class="col-3">
                 <div class="quantity">
                     <img src="pic/sofa-512.png"  width="40" height="40">
                     <button class="btn minus-btnsfa disabled" type="button">-</button>
                     <input type="text" name="NumOfSofa" id="NumOfSofa" value="1">
                     <button class="btn plus-btnsfa" type="button">+</button>
                 </div>
-            </div>
 
 
-           <div class="col-3">
                 <div class="quantity">
                     <img src="pic/washing-machine-512.png"  width="36" height="40">
                     <button class="btn minus-btnwm disabled" type="button">-</button>
                     <input type="text" name="NumOfWM" id="NumOfWM" value="1">
                     <button class="btn plus-btnwm" type="button">+</button>
                 </div>
-           </div>
+
+
+            <div class="quantity">
+                <img src="pic/air-conditioner.png"  width="40" height="40">
+                <button class="btn minus-btnac disabled" type="button">-</button>
+                <input type="text" name="NumOfAC" id="NumOfAC" value="1">
+                <button class="btn plus-btnac" type="button">+</button>
+            </div>
+
+
         </div>
 
         <br>
             <div class="form-group col-md">
                 <label for="Desc">House description:</label>
                 <br>
-                <textarea id="Desc" name="Desc" rows="4" cols="50"></textarea>
+                <textarea id="Desc" maxlength="255" name="Desc" rows="4" cols="50"></textarea>
             </div>
 
 
@@ -165,18 +172,12 @@
 
         <div class="file-upload-wrapper col-md">
             <label for="hPic">House Image :</label>
-            <input type="file" id="hPic" name="hPic" class="file-upload"
-                   data-height="300" required="required" multiple=""/>
+            <input type="file" accept="image/*" id="hPic" name="hPic" class="file-upload"
+                   data-height="300" required="required"/>
         </div>
 
 
         <br>
-        <div class="mb-3 col-md">
-            <label for="hAgree" class="form-label">House Agreement</label>
-            <input class="form-control form-control-sm" name="hAgree" id="hAgree" type="file" accept="application/pdf, application/word"/>
-            <br>
-            <p> This
-        </div>
 
     <br/>
         <div class="sbt mx-auto">

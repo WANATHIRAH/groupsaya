@@ -54,21 +54,23 @@ public class LCreateHouseServlet extends HttpServlet {
         //picture upload
         Part f=request.getPart("hPic");
         String imageFileName=f.getSubmittedFileName();
-        File file = new File("C:/Users/Public/LAB EXERCISE/nonresident/src/images/" + imageFileName);
+        File file = new File("C:/Users/Public/LAB EXERCISE/nonresident/src/main/webapp/images/" + imageFileName);
         System.out.println("my file need upload" + file);
 
         //agree file upload
-        Part agree =request.getPart("hAgree");
-        String agreeFileName=agree.getSubmittedFileName();
-        File file2 = new File("C:/Users/Public/LAB EXERCISE/nonresident/src/images/" + agreeFileName);
-        System.out.println("my file need upload" + file2);
+//        Part agree =request.getPart("hAgree");
+//        String agreeFileName=agree.getSubmittedFileName();
+//        File file2 = new File("C:/Users/Public/LAB EXERCISE/nonresident/src/main/webapp/images/" + agreeFileName);
+//        System.out.println("my file need upload" + file2);
 
        try{
+
 
            String hName    = request.getParameter("hName");
            Double hMP     = Double.parseDouble(request.getParameter("Pricepm"));
            String hAddress = request.getParameter("hAddress");
-           boolean hAvailability= Boolean.parseBoolean(request.getParameter("hAvailability"));
+           String hloc    = request.getParameter("hloc");
+           String hAvailability = request.getParameter("hAvailability");
            int hNoTenants = Integer.parseInt( request.getParameter("NumOfTenant"));
            int hNoRoom = Integer.parseInt(request.getParameter("NumOfRooms"));
            int hNoToilet = Integer.parseInt(request.getParameter("NumOfToilet"));
@@ -90,14 +92,14 @@ public class LCreateHouseServlet extends HttpServlet {
                fos.write(data);
                fos.close();
 
-               //for agreement file
-               FileOutputStream fos2 = new FileOutputStream(file2);
-               InputStream is2 = f.getInputStream();
-
-               byte[] data2 =new byte[is.available()];
-               is2.read(data2);
-               fos2.write(data2);
-               fos2.close();
+//               //for agreement file
+//               FileOutputStream fos2 = new FileOutputStream(file2);
+//               InputStream is2 = f.getInputStream();
+//
+//               byte[] data2 =new byte[is.available()];
+//               is2.read(data2);
+//               fos2.write(data2);
+//               fos2.close();
 
 
            }catch (Exception e){
@@ -113,47 +115,32 @@ public class LCreateHouseServlet extends HttpServlet {
            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
            PreparedStatement st;
-           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,houseagreement,landlordid) values(?,?,?,TO_DATE('23-JAN-2022', 'DD-MON-YYYY'),?,?,?,?,?,?,?,?,?,?,1)";
+           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,landlordid) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,1)";
            st = conn.prepareStatement(query);
                st.setString(1,hName);
                st.setDouble(2,hMP);
                st.setString(3,hAddress);
-               st.setBoolean(4,hAvailability);
-               st.setInt(5,hNoTenants);
-               st.setInt(6,hNoRoom);
-               st.setInt(7,hNoToilet);
-               st.setInt(8,hNoAC);
-               st.setBoolean(9,hWifi);
-               st.setInt(10,hFurniture);
-               st.setInt(11,hWM);
-               st.setString(12,desc);
-               st.setString(13,agreeFileName);
+               st.setString(4,hloc);
+               st.setString(5,hAvailability);
+               st.setInt(6,hNoTenants);
+               st.setInt(7,hNoRoom);
+               st.setInt(8,hNoToilet);
+               st.setInt(9,hNoAC);
+               st.setBoolean(10,hWifi);
+               st.setInt(11,hFurniture);
+               st.setInt(12,hWM);
+               st.setString(13,desc);
+               st.setString(14,imageFileName);
 
 
                int row= st.executeUpdate();//return no of row effected
 
-
                if(row>0){
-                   out.println("Record inserted");
+                   response.sendRedirect("landlord-displayHouseList.jsp");
                }else{
                    out.println("Record failed");
                }
 
-
-           PreparedStatement st2;
-           String query2="insert into housePic(housePicName,landlordid) values(?,?)";
-           st2 = conn.prepareStatement(query2);
-           st2.setString(1,imageFileName);
-           st2.setInt(2,hid);
-
-               int row2= st2.executeUpdate();//return no of row effected
-
-
-               if(row2>0){
-                   out.println("Record inserted");
-               }else{
-                   out.println("Record failed");
-               }
 
 //           PreparedStatement st3;
 //           String query3="insert into houseAgree(houseAgreeName,landlordid) values(?,?)";

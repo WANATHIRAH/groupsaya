@@ -61,14 +61,15 @@ public class AddImagesServlet extends HttpServlet {
             String pass = "0b201fb2e59025b780ce0b4148e508b6747fbaf77f6e8cedc675ee4dbc44638a";
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-            PreparedStatement st;
-            String query="insert into housepic(housepicname) values(?)";
-            st = conn.prepareStatement(query);
-            st.setString(1,imageFileName);
-            int row= st.executeUpdate();//return no of row effected
+            PreparedStatement st2;
+            String query2="insert into housepic(housepicname,houseid) values(?,(SELECT NEXTVAL('HShouse_id')));";
+            st2 = conn.prepareStatement(query2);
+            st2.setString(1,imageFileName);
+
+            int row2= st2.executeUpdate();//return no of row effected
 
 
-            if(row>0){
+            if(row2>0){
                 out.println("Record inserted");
             }else{
                 out.println("Record failed");

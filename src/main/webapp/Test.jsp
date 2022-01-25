@@ -41,20 +41,20 @@
        onclick="window.location.href='Home.jsp'" />
 
 
-<%
-    String mytext = request.getParameter("id");
+<%--<%--%>
+<%--    String mytext = request.getParameter("id");--%>
 
-    if(mytext == null){
+<%--    if(mytext == null){--%>
 
-    }
-    else{
-        session.setAttribute("sdid",request.getParameter("id"));
-        session.setAttribute("sdName",request.getParameter("name"));
-        session.setAttribute("sdEmail",request.getParameter("email"));
-        session.setAttribute("sdPnum",request.getParameter("phnum"));
+<%--    }--%>
+<%--    else{--%>
+<%--        session.setAttribute("sdid",request.getParameter("stuid"));--%>
+<%--        session.setAttribute("sdName",request.getParameter("stuname"));--%>
+<%--        session.setAttribute("sdEmail",request.getParameter("email"));--%>
+<%--        session.setAttribute("sdPnum",request.getParameter("phonenum"));--%>
 
-        out.println("session created");
-    }
-%>
+<%--        out.println("session created");--%>
+<%--    }--%>
+<%--%>--%>
 </body>
 </html>

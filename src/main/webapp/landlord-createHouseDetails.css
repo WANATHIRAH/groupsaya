@@ -1,45 +1,46 @@
 
 body {
     background-image: url('https://i.pinimg.com/736x/9c/d3/a7/9cd3a7847066e13f1e400d93d004281d--home-painting-ideas-interior-painting.jpg');
-    display: grid;
     align-items: center;
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;
     height: 220vh;
     font-size: 100%;
-    font-family: Georgia, serif;
+    font-family: Verdana,sans-serif;
 }
+
 
 .topic {
     background-color: white;
     width: 60rem;
     color: black;
     z-index: 2;
-    margin-top:70px;
-    margin-bottom: 10px;
-    padding-top: 10px;
+    margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 5px;
 }
 
 .topic p{
     text-align: center;
     font-size: 20px;
+    padding: 10px;
 }
 
 .tintedbg{
     width: 60rem;
     height: 185vh;
     box-shadow: 0 0 1rem 0 rgba( 0, 0, 0, .2);
-    border-radius: 5px;
+    border-radius: 15px;
     position: relative;
     background: inherit;
-    overflow: hidden;
-    border-radius: 5px;
+    overflow: auto;
     z-index: 1;
+    margin:auto;
 }
 
-.tintedbg:before {
+.tintedbg:before{
     content: "";
     position: absolute;
     background: inherit;
@@ -82,8 +83,32 @@ input[type=text] {
 }
 
 .quantity {
-    display:flex;
+    display:inline-flex;
 }
+
+.quantity button {
+    width: 45px;
+    height:45px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 0;
+    background: #007bff;
+}
+
+.quantity img {
+    margin-right: 10px;
+    margin-left: 60px;
+}
+
+.bgd {
+    background-color: lightgrey;
+    text-align: center;
+    color:  #007bff;
+    width: 65rem;
+    height: 1cm;
+    padding: 5px 10px;
+}
+
 
 .quantity button {
     width: 45px;

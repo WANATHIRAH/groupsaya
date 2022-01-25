@@ -22,6 +22,25 @@
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
     String ddMMyyyyToday = DATE_FORMAT.format(today);
 
+    String houseidJ= (String)request.getAttribute("hids");
+    String housenameJ= (String)request.getAttribute("hnames");
+    String housemonth= (String)request.getAttribute("hpaymonth");
+    String houseadd= (String)request.getAttribute("haddress");
+    String houseloc= (String)request.getAttribute("houseloc");
+    Date d= (Date) request.getAttribute("hpdate");
+    String available= (String)request.getAttribute("hava");
+    String hnotenant= (String)request.getAttribute("hnoT");
+    String hnoroom= (String)request.getAttribute("hnoR");
+    String hnotoilet= (String)request.getAttribute("hnoToil");
+    String hnoac= (String)request.getAttribute("hnoAC");
+    String wifi= (String)request.getAttribute("hnoWifi");
+    String furnish= (String)request.getAttribute("hnoFur");
+    String washing= (String)request.getAttribute("hnoWM");
+    String housedesc= (String)request.getAttribute("hdec");
+    String housepic= (String)request.getAttribute("hpic");
+    String landid= (String)request.getAttribute("landid");
+
+
 
 %>
 
@@ -30,9 +49,10 @@
 </div>
 
 <div class="tintedbg">
-    <form name="HouseInfoForm" method="post" action="landlord-createHouseDetails.jsp"  enctype = "multipart/form-data">
+    <form name="HouseInfoForm" method="post" action="UpdateHouseDetailsServlet"  enctype = "multipart/form-data">
     <br/>
-<%--        <input type="hidden" name="houseid" value="<%=resultSet.getString("id") %>">--%>
+        <input type="number" name="hid" value="<%=houseidJ%>" hidden>
+        <%    System.out.println(houseidJ);%>
 <%--        <input type="text" name="houseid" value="<%=resultSet.getString("id") %>">--%>
     <br/>
         <div class="form-row">
@@ -48,27 +68,39 @@
 
         <div class="form-group col-md">
                 <label for="hName">House Name</label>
-                <input type="text" id="hName" class="form-control" name="hName" placeholder="Your House Name">
+                <input type="text" id="hName" class="form-control" name="hNameu" value="<%=housenameJ%>"/>
         </div>
 
         <div class="form-group col-md">
                 <label for="hAddress">Address</label>
-                <input type="text" id="hAddress" class="form-control" name="hAddress" placeholder="eg: Taman Sentosa Jaya">
+                <input type="text" id="hAddress" class="form-control" name="hAddress" placeholder="eg: Taman Sentosa Jaya" value="<%=houseadd%>"/>
+        </div>
+
+        <div class="form-group col-md">
+            <label for="hloc">Location:</label>
+            <select name="hloc" id="hloc">
+                <option value="<%=houseloc%>"><%=houseloc%></option>
+                <option value="Taman Lipat Kajang">Taman Lipat Kajang</option>
+                <option value="Taman Merlimau">Taman Merlimau</option>
+                <option value="Taman Lipat Perdana">Taman Lipat Perdana</option>
+                <option value="Seri Mendapat">Seri Mendapat</option>
+            </select>
         </div>
 
         <div class="form-row col-md">
             <div class="form-group col-md-6">
                 <label for="Pricepm">Price per month (RM)</label>
-                <input type="number" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300">
+                <input type="number" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300" value="<%=housemonth%>"/>
             </div>
             <div class="form-group col-md-3">
+                <% if (housemonth=="Available")%>
                 <p>Available?</p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hAvailability" id="OYes" value="Yes">
+                    <input class="form-check-input" type="radio" name="hAvailability" id="OYes" value="Available">
                     <label class="form-check-label" for="OYes">Yes</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hAvailability" id="ONo" value="No">
+                    <input class="form-check-input" type="radio" name="hAvailability" id="ONo" value="Not Available">
                     <label class="form-check-label" for="ONo">No</label>
                 </div>
             </div>
@@ -91,7 +123,7 @@
                 <div class="quantity">
                     <img src="pic/group-512.png"  width="40" height="35">
                     <button class="btn minus-btnNOT disabled" type="button">-</button>
-                    <input type="text" id="NumOfTenant" value="1">
+                    <input type="text" name="NumOfTenant" id="NumOfTenant" value="<%=hnotenant%>"/>
                     <button class="btn plus-btnNOT" type="button" >+</button>
                 </div>
         </div>
@@ -110,7 +142,7 @@
                 <div class="quantity">
                     <img src="pic/hotel-512.png"  width="40" height="40">
                     <button class="btn minus-btnhotel disabled" type="button">-</button>
-                    <input type="text" id="NumOfRooms"  value="1">
+                    <input type="text" name="NumOfRooms" id="NumOfRooms"  value="<%=hnoroom%>"/>
                     <button class="btn plus-btnhotel" type="button">+</button>
                 </div>
             </div>
@@ -119,7 +151,7 @@
                     <div class="quantity">
                        <img src="pic/bathroom.png"  width="40" height="40">
                       <button class="btn minus-btnbath disabled" type="button">-</button>
-                      <input type="text" id="NumOfToilet" value="1">
+                      <input type="text"  name="NumOfToilet" id="NumOfToilet" value="<%=hnotoilet%>"/>
                       <button class="btn plus-btnbath" type="button">+</button>
                     </div>
             </div>
@@ -128,7 +160,7 @@
                 <div class="quantity">
                     <img src="pic/air-conditioner.png"  width="40" height="40">
                     <button class="btn minus-btnac disabled" type="button">-</button>
-                    <input type="text" id="NumOfAC" value="1">
+                    <input type="text" name="NumOfAC" id="NumOfAC" value="<%=hnoac%>"/>
                     <button class="btn plus-btnac" type="button">+</button>
                 </div>
             </div>
@@ -140,7 +172,7 @@
                 <div class="quantity">
                     <img src="pic/sofa-512.png"  width="40" height="40">
                     <button class="btn minus-btnsfa disabled" type="button">-</button>
-                    <input type="text" id="NumOfSofa" value="1">
+                    <input type="text" name="NumOfSofa" id="NumOfSofa" value="<%=furnish%>"/>
                     <button class="btn plus-btnsfa" type="button">+</button>
                 </div>
             </div>
@@ -150,7 +182,7 @@
                 <div class="quantity">
                     <img src="pic/washing-machine-512.png"  width="36" height="40">
                     <button class="btn minus-btnwm disabled" type="button">-</button>
-                    <input type="text" id="NumOfWM" value="1">
+                    <input type="text"  name="NumOfWM" id="NumOfWM" value="<%=washing%>"/>
                     <button class="btn plus-btnwm" type="button">+</button>
                 </div>
            </div>
@@ -160,7 +192,7 @@
             <div class="form-group col-md">
                 <label for="Desc">House description:</label>
                 <br>
-                <textarea id="Desc" name="Desc" rows="4" cols="50"></textarea>
+                <textarea id="Desc" name="Desc" rows="4" cols="50"><%=housedesc%></textarea>
             </div>
 
 
@@ -168,19 +200,13 @@
         <div class="file-upload-wrapper col-md">
             <label for="hPic">House Image :</label>
                 <input type="file" id="hPic" name="hPic" class="file-upload"
-                       data-height="300" required="required"/>
-        </div>
-
-        <br>
-        <div class="mb-3 col-md">
-            <label for="hAgree" class="form-label">House Agreement</label>
-            <input class="form-control form-control-sm" id="hAgree" type="file" multiple="">
+                       data-height="300" required="required" value="<%=housepic%>"/>
         </div>
 
     <br/>
         <div class="sbt mx-auto col-md">
             <button type="button" class="Cancelbtn btn-md" onclick="cn()">Cancel</button>
-            <button type="button" class="btn btn-primary btn-md">Update</button>
+            <button type="submit" class="btn btn-primary btn-md">Update</button>
         </div>
     <br/>
     </form>

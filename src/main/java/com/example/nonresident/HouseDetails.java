@@ -5,7 +5,7 @@ import java. util. Date;
 import java.lang.reflect.Field;
 
 public class HouseDetails  implements java.io.Serializable {
-    public Integer hID; //DEFAULT bila insert
+    public Integer hID;
     public String hName;
     public Double hMP;
     public String hAddress;

@@ -12,18 +12,18 @@ import java.sql.*;
 public class InsertDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-        HttpSession session = request.getSession(); // if nk wujudkan session mcm sir buat
-
-        // tarik value dri form dalam jsp lalu kot javascript bawah tu
-        String sdIDV = (String) session.getAttribute("sdid");
-        String sdhMPV = (String) session.getAttribute("sdName");
-        String SdEmailV = (String) session.getAttribute("sdEmail");
-        String PhoneNumV = (String) session.getAttribute("sdPnum");
-
-        //masukkan value ke dlm java class StudentDetails
-        StudentDetails sd = new StudentDetails(sdIDV, sdhMPV, SdEmailV, PhoneNumV);
+//yg dalam doget ni x de kaitan ni just cara nk buat sesssion
+//
+//        HttpSession session = request.getSession(); // if nk wujudkan session mcm sir buat
+//
+//        // tarik value dri form dalam jsp lalu kot javascript bawah tu
+//        String sdIDV = (String) session.getAttribute("sdid");
+//        String sdhMPV = (String) session.getAttribute("sdName");
+//        String SdEmailV = (String) session.getAttribute("sdEmail");
+//        String PhoneNumV = (String) session.getAttribute("sdPnum");
+//
+//        //masukkan value ke dlm java class StudentDetails
+//        StudentDetails sd = new StudentDetails(sdIDV, sdhMPV, SdEmailV, PhoneNumV);
     }
 
 
@@ -44,7 +44,7 @@ public class InsertDetailsServlet extends HttpServlet {
             //nk testing keluar masuk data pastikan xampp, heroku , database connected
 
         Class.forName("org.postgresql.Driver"); // ni stay
-        String dbURL = "jdbc:postgresql://ec2-44-194-101-60.compute-1.amazonaws.com:5432/d2us57cbf117bh"; //ni url dri heroku database
+        String dbURL = "jdbc:postgresql://ec2-44-194-101-60.compute-1.amazonaws.com:5432/d2us57cbf117bh"; //ni url dri url dalam data source
         String user = "rnscsqosqdtcmz"; //ni user dri heroku database
         String pass = "0b201fb2e59025b780ce0b4148e508b6747fbaf77f6e8cedc675ee4dbc44638a"; //ni password dri heroku database
         Connection conn = DriverManager.getConnection(dbURL, user, pass);
@@ -53,7 +53,7 @@ public class InsertDetailsServlet extends HttpServlet {
             PreparedStatement st;
             String query="insert into studentdetails(studid,stuname,email,phonenum) values(?,?,?,?)";
             st = conn.prepareStatement(query);
-            st.setString(1,sdID1); //paramter tu no column dlm table.sdId1 tu dri nama attribute kat String atas tu
+            st.setString(1,sdID1);
             st.setString(2,sdhMP);
             st.setString(3,SdEmail);
             st.setString(4,PhoneNum);

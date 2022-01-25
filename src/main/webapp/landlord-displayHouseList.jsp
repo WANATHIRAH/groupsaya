@@ -5,6 +5,9 @@
   Time: 8:11 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <style><%@include file="landlord-displayHouseList.css"%></style>
@@ -17,26 +20,31 @@
      <p>YOUR HOUSE LIST</p>
 </div>
 <br>
-<%-- for each function insert by row and column --%>
-<div class="overflow-auto">
-    <div class="Hcont">
-        <div class="housepic"></div>  <%--Nnti letak data sql using scrplet --%>
-        <div class="houseName">
-            <p>Rumah Banglo Taman Permai Indah</p>  <%--Nnti letak data sql using scrplet --%>
-        </div>
-        <div class="myLink">
-            <button onclick="x()">View More</button>
-        </div>
-    </div>
 
+<sql:setDataSource var="ic" driver="org.postgresql.Driver" url="jdbc:postgresql://ec2-44-194-101-60.compute-1.amazonaws.com:5432/d2us57cbf117bh" user="rnscsqosqdtcmz" password="0b201fb2e59025b780ce0b4148e508b6747fbaf77f6e8cedc675ee4dbc44638a"/>
+
+<sql:query dataSource="${ic}" var="oc">
+    SELECT houseid,housepicname,housename from housedetails;
+</sql:query>
+
+<div class="overflow-auto">
+    <c:forEach var="result" items="${oc.rows}">
+        <c:set var="houseid" scope="application" value="${result.houseid}"/>
     <div class="Hcont">
-        <div class="housepic"></div>  <%--Nnti letak data sql using scrplet --%>
+        <form action="DisplayDetailsServlet" method="post">
+            <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
+        <div class="housepic">
+            <img src="images/${result.housepicname}"/>
+        </div>  <%--Nnti letak data sql using scrplet --%>
         <div class="houseName">
-            <p>Rumah Teres 22</p>  <%--Nnti letak data sql using scrplet --%>
+            <p><c:out value="${result.housename}"/></p>  <%--Nnti letak data sql using scrplet --%>
         </div>
         <div class="myLink">
-            <button onclick="x()">View More</button>
+            <button type="submit">View More</button>
         </div>
+        </form>
+    </div>
+    </c:forEach>
     </div>
 
 
